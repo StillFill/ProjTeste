@@ -1,0 +1,7 @@
+C:\Users\Zupper\source\repos\ItauProj\Dominio\bin\Debug\netcoreapp3.1\Dominio.deps.json
+C:\Users\Zupper\source\repos\ItauProj\Dominio\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\Zupper\source\repos\ItauProj\Dominio\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
+C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
+C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb
