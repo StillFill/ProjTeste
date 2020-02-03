@@ -94,9 +94,13 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Dommel": {
+            "Dapper.FluentMap": {
               "target": "Package",
-              "version": "[1.11.0, )"
+              "version": "[1.8.0, )"
+            },
+            "Dapper.FluentMap.Dommel": {
+              "target": "Package",
+              "version": "[1.7.0, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",

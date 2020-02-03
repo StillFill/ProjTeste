@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Dominio.Models;
 
 namespace Dominio.Interfaces
 {
-    interface IProdutoRepository : IRepositoryBase<Produto>
+    public interface IProdutoRepository : IRepositoryBase<Produto>
     {
     }
 }

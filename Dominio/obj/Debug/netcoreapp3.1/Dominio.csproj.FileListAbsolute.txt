@@ -5,3 +5,4 @@ C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.As
 C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
 C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
 C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\Zupper\source\repos\ItauProj\Dominio\obj\Debug\netcoreapp3.1\Dominio.csprojAssemblyReference.cache

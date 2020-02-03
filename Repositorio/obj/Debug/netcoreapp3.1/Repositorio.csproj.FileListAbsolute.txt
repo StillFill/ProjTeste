@@ -6,3 +6,6 @@ C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Reposi
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfoInputs.cache
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfo.cs
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csproj.CopyComplete
+C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.pdb
+C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.dll
+C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.pdb

@@ -3,6 +3,10 @@ using Dommel;
 using Microsoft.Extensions.Configuration;
 using Dominio.Interfaces;
 using System.Data.SqlClient;
+using Dapper.FluentMap;
+using Dapper.FluentMap.Dommel;
+using Dapper;
+using Dominio.Models;
 
 namespace Repositorio.Common
 {
@@ -16,7 +20,9 @@ namespace Repositorio.Common
         {
             _configuration = configuration;
 
-            conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            conn = new SqlConnection("Server=DESKTOP-6T3AR1E\\MSSQLSERVER01;Database=master;Trusted_Connection=True;");
+
+            conn.Open();
         }
 
         public void Add(TEntity obj)

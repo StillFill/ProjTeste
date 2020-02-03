@@ -16,6 +16,32 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
+      "Dapper.FluentMap/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.60.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Dapper.FluentMap.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.FluentMap.dll": {}
+        }
+      },
+      "Dapper.FluentMap.Dommel/1.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.60.1",
+          "Dapper.FluentMap": "1.8.0",
+          "Dommel": "1.11.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Dapper.FluentMap.Dommel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.FluentMap.Dommel.dll": {}
+        }
+      },
       "Dommel/1.11.0": {
         "type": "package",
         "dependencies": {
@@ -332,6 +358,40 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "Dapper.FluentMap/1.8.0": {
+      "sha512": "2GRcucxPuQpAQUIWEhcGz8M5079Sg09cQ8WSh7nKeOHLb+4rzX0hGwHP4kVLI3Sg4LFbIgzRvhEOf5upP/6sYQ==",
+      "type": "package",
+      "path": "dapper.fluentmap/1.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapper.fluentmap.1.8.0.nupkg.sha512",
+        "dapper.fluentmap.nuspec",
+        "lib/net451/Dapper.FluentMap.dll",
+        "lib/net451/Dapper.FluentMap.xml",
+        "lib/netstandard1.3/Dapper.FluentMap.dll",
+        "lib/netstandard1.3/Dapper.FluentMap.xml",
+        "lib/netstandard2.0/Dapper.FluentMap.dll",
+        "lib/netstandard2.0/Dapper.FluentMap.xml"
+      ]
+    },
+    "Dapper.FluentMap.Dommel/1.7.0": {
+      "sha512": "q09fK33EfJDSUBQxTwvuJ/MOe9TlAFsV6ygBsnaJvit77fF6YzqOat4xHIGrbovXafMINeXHq6eH7SfGt52PzA==",
+      "type": "package",
+      "path": "dapper.fluentmap.dommel/1.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapper.fluentmap.dommel.1.7.0.nupkg.sha512",
+        "dapper.fluentmap.dommel.nuspec",
+        "lib/net451/Dapper.FluentMap.Dommel.dll",
+        "lib/net451/Dapper.FluentMap.Dommel.xml",
+        "lib/netstandard1.3/Dapper.FluentMap.Dommel.dll",
+        "lib/netstandard1.3/Dapper.FluentMap.Dommel.xml",
+        "lib/netstandard2.0/Dapper.FluentMap.Dommel.dll",
+        "lib/netstandard2.0/Dapper.FluentMap.Dommel.xml"
       ]
     },
     "Dommel/1.11.0": {
@@ -1408,8 +1468,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Dapper.FluentMap >= 1.8.0",
+      "Dapper.FluentMap.Dommel >= 1.7.0",
       "Dominio >= 1.0.0",
-      "Dommel >= 1.11.0",
       "Microsoft.Extensions.Configuration.Abstractions >= 3.1.1",
       "System.Data.SqlClient >= 4.8.0"
     ]
@@ -1455,9 +1516,13 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
-          "Dommel": {
+          "Dapper.FluentMap": {
             "target": "Package",
-            "version": "[1.11.0, )"
+            "version": "[1.8.0, )"
+          },
+          "Dapper.FluentMap.Dommel": {
+            "target": "Package",
+            "version": "[1.7.0, )"
           },
           "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",

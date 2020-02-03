@@ -1,31 +1,21 @@
-﻿namespace Dominio
+﻿namespace Dominio.Models
 {
     public class Produto
     {
+
         // Propriedades
         public int Id_Produto { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public decimal Preco { get; set; }
-        public int Quantidade { get; set; }
 
-        public int Categoria { get; set; }
-
-        // Métodos
-        public bool PodeVender()
+        public Produto(int Id_Produto, string Nome)
         {
-            return Quantidade > 0;
+            this.Id_Produto = Id_Produto;
+            this.Nome = Nome;
         }
 
-        public void Vendeu()
+        public Produto()
         {
-            if (PodeVender())
-                Quantidade--;
-        }
 
-        public void Comprou(int qtde)
-        {
-            Quantidade += qtde;
         }
     }
 }

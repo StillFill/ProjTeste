@@ -1,4 +1,4 @@
-﻿using Dominio;
+﻿using Dominio.Models;
 using System.Collections.Generic;
 
 namespace Dominio
