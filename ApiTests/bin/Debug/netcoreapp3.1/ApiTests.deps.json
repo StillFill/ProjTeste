@@ -1127,27 +1127,27 @@
       },
       "Api/1.0.0": {
         "dependencies": {
-          "Repositorio": "1.0.0"
+          "Repository": "1.0.0"
         },
         "runtime": {
           "Api.dll": {}
         }
       },
-      "Dominio/1.0.0": {
+      "Domain/1.0.0": {
         "runtime": {
-          "Dominio.dll": {}
+          "Domain.dll": {}
         }
       },
-      "Repositorio/1.0.0": {
+      "Repository/1.0.0": {
         "dependencies": {
           "Dapper.FluentMap": "1.8.0",
           "Dapper.FluentMap.Dommel": "1.7.0",
-          "Dominio": "1.0.0",
+          "Domain": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.1",
           "System.Data.SqlClient": "4.8.0"
         },
         "runtime": {
-          "Repositorio.dll": {}
+          "Repository.dll": {}
         }
       }
     }
@@ -1765,12 +1765,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Dominio/1.0.0": {
+    "Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Repositorio/1.0.0": {
+    "Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

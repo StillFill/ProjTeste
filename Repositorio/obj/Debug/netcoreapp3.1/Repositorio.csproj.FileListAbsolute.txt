@@ -1,7 +1,5 @@
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.deps.json
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.dll
-C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Dominio.dll
-C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Dominio.pdb
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csprojAssemblyReference.cache
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfoInputs.cache
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfo.cs
@@ -9,3 +7,5 @@ C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Reposi
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.pdb
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.dll
 C:\Users\Zupper\source\repos\ItauProj\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.pdb
+C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\Zupper\source\repos\ItauProj\Repositorio\bin\Debug\netcoreapp3.1\Domain.pdb

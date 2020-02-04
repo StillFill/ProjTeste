@@ -4,12 +4,12 @@
     "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Repositorio\\Repositorio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Dominio.csproj",
-        "projectName": "Dominio",
-        "projectPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj",
         "packagesPath": "C:\\Users\\Zupper\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
@@ -79,8 +79,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Dominio.csproj"
+              "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj"
               }
             }
           }

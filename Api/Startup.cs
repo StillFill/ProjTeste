@@ -1,16 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AspnetCore.EFCore_Dapper.Data.Repositories.Dapper;
 using Dapper.FluentMap;
 using Dapper.FluentMap.Dommel;
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Dominio.Business;
+using Domain.Interfaces.Produtos;
+using Domain.Models.Produtos;
+using Services;
 
 namespace Api
 {
@@ -24,11 +23,13 @@ namespace Api
                 mvcConfig.EnableEndpointRouting = false;
             });
 
-            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IParamProdutoRepository, ParamProdutoRepository>();
+
+            services.AddScoped<ITipoProdutoService, TipoProdutoService>();
 
             FluentMapper.Initialize(c =>
             {
-                c.AddMap(new ProdutoMap());
+                c.AddMap(new ParamProdutoMap());
                 c.ForDommel();
             });
         }

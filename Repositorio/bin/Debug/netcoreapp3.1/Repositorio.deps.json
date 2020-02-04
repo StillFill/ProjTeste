@@ -10,7 +10,7 @@
         "dependencies": {
           "Dapper.FluentMap": "1.8.0",
           "Dapper.FluentMap.Dommel": "1.7.0",
-          "Dominio": "1.0.0",
+          "Domain": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.1",
           "System.Data.SqlClient": "4.8.0"
         },
@@ -224,9 +224,9 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "Dominio/1.0.0": {
+      "Domain/1.0.0": {
         "runtime": {
-          "Dominio.dll": {}
+          "Domain.dll": {}
         }
       }
     }
@@ -419,7 +419,7 @@
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
     },
-    "Dominio/1.0.0": {
+    "Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
