@@ -16,7 +16,7 @@ namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 
         public Task<IEnumerable<ParamProduto>> BuscarPorIdProduto(object id)
         {
-            string sql = "SELECT * FROM Produtos WHERE IdProduto='111'";
+            string sql = "SELECT * FROM Produtos WHERE IdProduto='" + id + "'";
             return conn.QueryAsync<ParamProduto> (sql);
         }
     }

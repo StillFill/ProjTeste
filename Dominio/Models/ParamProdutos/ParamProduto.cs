@@ -6,14 +6,14 @@ namespace Dominio.Models
     {
 
         // Propriedades
-        public int Id_Produto { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Grupo { get; set; }
         public string IdProduto { get; set; }
 
-        public ParamProduto(int Id_Produto, string Nome, string Grupo, string IdProduto)
+        public ParamProduto(int Id, string Nome, string Grupo, string IdProduto)
         {
-            this.Id_Produto = Id_Produto;
+            this.Id = Id;
             this.Nome = Nome;
             this.Grupo = Grupo;
             this.IdProduto = IdProduto;

@@ -9,6 +9,8 @@ using Domain.Models.Produtos;
 using System.Collections.Generic;
 using Services;
 using Domain.Interfaces.Produtos;
+using System.Linq;
+using Api.ViewModels;
 
 namespace Api.Controllers
 {
@@ -17,10 +19,12 @@ namespace Api.Controllers
     public class ParamProdutoController : Controller
     {
         private readonly IParamProdutoRepository produtoRepository;
+        private readonly ParamProdutoViewModel viewModel;
 
         public ParamProdutoController(IParamProdutoRepository produtoRepository, ITipoProdutoService tipoProdutoService)
         {
             this.produtoRepository = produtoRepository;
+            this.viewModel = new ParamProdutoViewModel();
         }
         
         [HttpPost]
@@ -43,30 +47,15 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> BuscarPorId(string id)
+        public async Task<ActionResult<List<ParamProdutoViewModel>>> BuscarPorId(string id)
         {
-            IEnumerable<ParamProduto> produtos = await produtoRepository.BuscarPorIdProduto(id);
+            List<ParamProduto> produtos = (await produtoRepository.BuscarPorIdProduto(id)).ToList();
 
+            if (produtos.Count() == 0) return Ok(new List<ParamProdutoViewModel>());
 
-            var columns = new Dictionary<string, List<ParamProduto>> {};
+            List<ParamProdutoViewModel> prods = viewModel.AgruparProdutos(produtos);
 
-            foreach (ParamProduto produto in produtos)
-            {
-                if (columns.ContainsKey(produto.Grupo)) {
-                    List<ParamProduto> paramProduto = columns.GetValueOrDefault(produto.Grupo);
-                    
-                    columns.Remove(produto.Grupo);
-
-                    paramProduto.Add(produto);
-
-                    columns.Add(produto.Grupo, paramProduto);
-                } else
-                {
-                    columns.Add(produto.Grupo, new List<ParamProduto>() { produto });
-                }
-            }
-
-            return Ok(columns);
+            return Ok(prods);
         }
     }
 }
