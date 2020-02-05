@@ -14,7 +14,7 @@ namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
         public ProdutosRepository(IConfiguration configuration) : base(configuration) { }
 
         public Task<IEnumerable<Produtos>> BuscarPorIdProduto(int id) {
-            string sql = "SELECT * FROM Produtos WHERE IdProduto='" + id + "'";
+            string sql = "SELECT * FROM Produtos WHERE IdProduto='" + id + "' AND DataRemocao IS NULL";
             return conn.QueryAsync<Produtos>(sql);
         }
 

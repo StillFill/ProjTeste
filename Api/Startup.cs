@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Domain.Interfaces.Produtos;
-using Domain.Models;
 using Services;
+using Repository.Mappings;
 
 namespace Api
 {
@@ -30,6 +30,7 @@ namespace Api
             FluentMapper.Initialize(c =>
             {
                 c.AddMap(new ParametrosMap());
+                c.AddMap(new ProdutosMap());
                 c.ForDommel();
             });
         }

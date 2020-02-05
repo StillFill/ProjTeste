@@ -1,14 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Dominio.Interfaces;
 using Dominio.Models;
-using System.Collections;
 using System.Threading.Tasks;
-using System.Text.Json;
 using Domain.Models;
 using System.Collections.Generic;
-using Services;
-using Domain.Interfaces.Produtos;
 using System.Linq;
 using Api.ViewModels;
 
@@ -51,10 +46,16 @@ namespace Api.Controllers
             return Ok("Inserido com sucesso!, Id inserido");
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<List<ParametrosViewModel>>> BuscarPorId(string id)
+        [HttpGet("{idProdutoExterno}")]
+        public async Task<ActionResult<List<ParametrosViewModel>>> BuscarPorId(int idProdutoExterno)
         {
-            List<Parametros> parametros = (await parametrosRepository.BuscarPorIdProduto(id)).ToList();
+            IEnumerable<Produtos> produtos = await produtosRepository.BuscarPorIdProduto(idProdutoExterno);
+
+            if (produtos.Count() == 0) return NotFound();
+
+            int idProduto = produtos.First().Id;
+
+            List<Parametros> parametros = (await parametrosRepository.BuscarPorIdProduto(idProduto)).ToList();
 
             if (parametros.Count() == 0) return Ok(new List<ParametrosViewModel>());
 
