@@ -22,7 +22,7 @@ namespace Api
                 mvcConfig.EnableEndpointRouting = false;
             });
 
-            services.AddScoped<IParametrosRepository, ParamProdutoRepository>();
+            services.AddScoped<IParametrosRepository, ParametrosRepository>();
             services.AddScoped<IProdutosRepository, ProdutosRepository>();
 
             services.AddScoped<ITipoProdutoService, TipoProdutoService>();

@@ -34,14 +34,13 @@ namespace Api.Controllers
 
             IEnumerable<Produtos> produtos = await produtosRepository.BuscarPorIdProduto(idProdutoExterno);
 
-            int idProduto;
-
-            if (produtos.Count() == 0)
+            if (produtos.Count() > 0)
             {
-                Produtos novoProduto = new Produtos(nomeProduto, idProdutoExterno);
-                idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
-            } 
-            else idProduto = produtos.First().Id;
+                await produtosRepository.DesativarProduto(produtos.Last().Id);
+            }
+
+            Produtos novoProduto = new Produtos(nomeProduto, idProdutoExterno);
+            int idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
 
             foreach (Parametros paramProduto in paramProdutos)
             {

@@ -8,7 +8,7 @@ namespace Domain.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string DataRemocao { get; set; }
+        public DateTime? DataRemocao { get; set; }
 
         public int IdProduto { get; set; }
 
@@ -16,6 +16,7 @@ namespace Domain.Models
         {
             this.Nome = Nome;
             this.IdProduto = IdProduto;
+            this.DataRemocao = null;
         }
 
         public Produtos()
