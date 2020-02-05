@@ -1,1 +1,13 @@
 .vs/
+./Api/obj
+./Api/bin
+./ApiTests/obj
+./ApiTests/bin
+./Dominio/obj
+./Dominio/bin
+./ExternalServices/obj
+./ExternalServices/bin
+./Repositorio/obj
+./Repositorio/bin
+./Services/obj
+./Services/bin
