@@ -18,7 +18,8 @@ namespace Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(mvcConfig => {
+            services.AddMvc(mvcConfig =>
+            {
                 mvcConfig.EnableEndpointRouting = false;
             });
 
@@ -44,13 +45,19 @@ namespace Api
 
             app.UseRouting();
 
-            app.UseCors(config => {
+            app.UseCors(config =>
+            {
                 config.AllowAnyHeader();
                 config.AllowAnyMethod();
                 config.AllowAnyOrigin();
             });
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            }); ;
         }
     }
 }

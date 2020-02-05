@@ -41,6 +41,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "NLog": {
+              "target": "Package",
+              "version": "[4.6.8, )"
+            },
             "Z.Dapper.Plus": {
               "target": "Package",
               "version": "[3.0.1, )"

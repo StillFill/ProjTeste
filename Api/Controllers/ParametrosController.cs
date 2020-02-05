@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using Domain.Models;
 using System.Collections.Generic;
-using Services;
-using Domain.Interfaces.Produtos;
+using Microsoft.Extensions.Logging;
 using System.Linq;
 using Api.ViewModels;
 
@@ -18,6 +17,7 @@ namespace Api.Controllers
     [Route("parametros")]
     public class ParametrosController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly IParametrosRepository parametrosRepository;
         private readonly IProdutosRepository produtosRepository;
         private readonly ParametrosViewModel viewModelServices = new ParametrosViewModel();
