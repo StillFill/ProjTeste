@@ -4,10 +4,7 @@ using Dominio.Models;
 using System.Threading.Tasks;
 using Domain.Models;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using Microsoft.Extensions.Logging;
-=======
->>>>>>> 19b3b8e0377b94c34e97092f6a5e4518567fbcff
 using System.Linq;
 using Api.ViewModels;
 
