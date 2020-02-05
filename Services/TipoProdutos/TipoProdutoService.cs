@@ -1,5 +1,5 @@
 ﻿using Domain.Interfaces.Produtos;
-using Domain.Models.Produtos;
+using Domain.Models;
 using System.Collections.Generic;
 using System.Text.Json;
 

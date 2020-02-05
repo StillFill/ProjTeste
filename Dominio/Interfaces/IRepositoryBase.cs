@@ -13,8 +13,6 @@ namespace Dominio.Interfaces
 
         Task<bool> Remover(int id);
 
-        Task<IEnumerable<TEntity>> BuscarTodos();
-
-        void AdicionarMultiplos(IEnumerable<TEntity> entities);
+        Task<TEntity> BuscarPorId(int id);
     }
 }

@@ -48,17 +48,9 @@ namespace Repositorio.Common
             return conn.DeleteAsync(id);
         }
 
-        public Task<IEnumerable<TEntity>> BuscarTodos()
+        public Task<TEntity> BuscarPorId(int id)
         {
-            return conn.GetAllAsync<TEntity>();
-        }
-
-        public void AdicionarMultiplos(IEnumerable<TEntity> entities)
-        {
-            foreach (TEntity entitie in entities)
-            {
-               conn.InsertAsync(entitie);
-            }
+            return conn.GetAsync<TEntity>(id);
         }
     }
 }

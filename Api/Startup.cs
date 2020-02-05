@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Dominio.Business;
 using Domain.Interfaces.Produtos;
-using Domain.Models.Produtos;
+using Domain.Models;
 using Services;
 
 namespace Api
@@ -23,13 +22,14 @@ namespace Api
                 mvcConfig.EnableEndpointRouting = false;
             });
 
-            services.AddScoped<IParamProdutoRepository, ParamProdutoRepository>();
+            services.AddScoped<IParametrosRepository, ParamProdutoRepository>();
+            services.AddScoped<IProdutosRepository, ProdutosRepository>();
 
             services.AddScoped<ITipoProdutoService, TipoProdutoService>();
 
             FluentMapper.Initialize(c =>
             {
-                c.AddMap(new ParamProdutoMap());
+                c.AddMap(new ParametrosMap());
                 c.ForDommel();
             });
         }

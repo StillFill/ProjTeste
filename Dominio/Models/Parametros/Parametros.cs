@@ -2,16 +2,16 @@
 
 namespace Dominio.Models
 {
-    public class ParamProduto
+    public class Parametros
     {
 
         // Propriedades
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Grupo { get; set; }
-        public string IdProduto { get; set; }
+        public int IdProduto { get; set; }
 
-        public ParamProduto(int Id, string Nome, string Grupo, string IdProduto)
+        public Parametros(int Id, string Nome, string Grupo, int IdProduto)
         {
             this.Id = Id;
             this.Nome = Nome;
@@ -19,7 +19,7 @@ namespace Dominio.Models
             this.IdProduto = IdProduto;
         }
 
-        public ParamProduto()
+        public Parametros()
         {
 
         }

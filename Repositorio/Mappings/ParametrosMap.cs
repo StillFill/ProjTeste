@@ -2,11 +2,11 @@
 using Dominio.Models;
 using Dapper.FluentMap.Dommel.Mapping;
 
-public class ParamProdutoMap : DommelEntityMap<ParamProduto>
+public class ParametrosMap : DommelEntityMap<Parametros>
 {
-    public ParamProdutoMap()
+    public ParametrosMap()
     {
-        ToTable("Produtos");
+        ToTable("Parametros");
         Map(i => i.Id).ToColumn("Id").IsKey().IsIdentity();
         Map(i => i.Nome).ToColumn("Nome");
         Map(i => i.Grupo).ToColumn("Grupo");

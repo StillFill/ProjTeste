@@ -10,14 +10,14 @@ using Dapper;
 
 namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 {
-    public class ParamProdutoRepository : RepositoryBase<ParamProduto>, IParamProdutoRepository
+    public class ParamProdutoRepository : RepositoryBase<Parametros>, IParametrosRepository
     {
         public ParamProdutoRepository(IConfiguration configuration) : base(configuration) {}
 
-        public Task<IEnumerable<ParamProduto>> BuscarPorIdProduto(object id)
+        public Task<IEnumerable<Parametros>> BuscarPorIdProduto(object id)
         {
-            string sql = "SELECT * FROM Produtos WHERE IdProduto='" + id + "'";
-            return conn.QueryAsync<ParamProduto> (sql);
+            string sql = "SELECT * FROM Parametros WHERE IdProduto='" + id + "'";
+            return conn.QueryAsync<Parametros> (sql);
         }
     }
 }

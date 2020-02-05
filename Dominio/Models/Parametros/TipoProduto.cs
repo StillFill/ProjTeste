@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Models.Produtos
+namespace Domain.Models
 {
     public class TipoProduto
     {
