@@ -10,9 +10,9 @@ using Dapper;
 
 namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 {
-    public class ParamProdutoRepository : RepositoryBase<Parametros>, IParametrosRepository
+    public class ParametrosRepository : RepositoryBase<Parametros>, IParametrosRepository
     {
-        public ParamProdutoRepository(IConfiguration configuration) : base(configuration) {}
+        public ParametrosRepository(IConfiguration configuration) : base(configuration) {}
 
         public Task<IEnumerable<Parametros>> BuscarPorIdProduto(object id)
         {
