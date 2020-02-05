@@ -1,11 +1,11 @@
 ﻿using System;
 using Dominio.Interfaces;
-using Microsoft.Extensions.Configuration;
 using Repositorio.Common;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Dapper;
 using Domain.Models;
+using Dapper;
+using Microsoft.Extensions.Configuration;
 
 namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 {
@@ -15,6 +15,7 @@ namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 
         public Task<IEnumerable<Produtos>> BuscarPorIdProduto(int id) {
             string sql = "SELECT * FROM Produtos WHERE IdProduto='" + id + "' AND DataRemocao IS NULL";
+
             return conn.QueryAsync<Produtos>(sql);
         }
 
