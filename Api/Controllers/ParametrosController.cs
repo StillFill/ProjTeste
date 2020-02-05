@@ -1,13 +1,13 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Dominio.Interfaces;
 using Dominio.Models;
-using System.Collections;
 using System.Threading.Tasks;
-using System.Text.Json;
 using Domain.Models;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using Microsoft.Extensions.Logging;
+=======
+>>>>>>> 19b3b8e0377b94c34e97092f6a5e4518567fbcff
 using System.Linq;
 using Api.ViewModels;
 
@@ -34,14 +34,13 @@ namespace Api.Controllers
 
             IEnumerable<Produtos> produtos = await produtosRepository.BuscarPorIdProduto(idProdutoExterno);
 
-            int idProduto;
-
-            if (produtos.Count() == 0)
+            if (produtos.Count() > 0)
             {
-                Produtos novoProduto = new Produtos(nomeProduto, idProdutoExterno);
-                idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
-            } 
-            else idProduto = produtos.First().Id;
+                await produtosRepository.DesativarProduto(produtos.Last().Id);
+            }
+
+            Produtos novoProduto = new Produtos(nomeProduto, idProdutoExterno);
+            int idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
 
             foreach (Parametros paramProduto in paramProdutos)
             {
@@ -52,10 +51,16 @@ namespace Api.Controllers
             return Ok("Inserido com sucesso!, Id inserido");
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<List<ParametrosViewModel>>> BuscarPorId(string id)
+        [HttpGet("{idProdutoExterno}")]
+        public async Task<ActionResult<List<ParametrosViewModel>>> BuscarPorId(int idProdutoExterno)
         {
-            List<Parametros> parametros = (await parametrosRepository.BuscarPorIdProduto(id)).ToList();
+            IEnumerable<Produtos> produtos = await produtosRepository.BuscarPorIdProduto(idProdutoExterno);
+
+            if (produtos.Count() == 0) return NotFound();
+
+            int idProduto = produtos.First().Id;
+
+            List<Parametros> parametros = (await parametrosRepository.BuscarPorIdProduto(idProduto)).ToList();
 
             if (parametros.Count() == 0) return Ok(new List<ParametrosViewModel>());
 
