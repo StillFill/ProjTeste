@@ -1,18 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj": {}
+    "C:\\Users\\Zupper\\Desktop\\ProjTeste\\Dominio\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj": {
+    "C:\\Users\\Zupper\\Desktop\\ProjTeste\\Dominio\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Zupper\\Desktop\\ProjTeste\\Dominio\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\Domain.csproj",
+        "projectPath": "C:\\Users\\Zupper\\Desktop\\ProjTeste\\Dominio\\Domain.csproj",
         "packagesPath": "C:\\Users\\Zupper\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zupper\\source\\repos\\ItauProj\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\Zupper\\Desktop\\ProjTeste\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\Zupper\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
