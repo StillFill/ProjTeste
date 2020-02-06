@@ -16,7 +16,7 @@ namespace Services
             */
 
             return JsonSerializer
-                    .Deserialize<IEnumerable<TipoProduto>> ("[{ \"idProduto\": 1, \"nome\": \"Debenture\" }]");
+                    .Deserialize<IEnumerable<TipoProduto>> ("[{ \"id\": 1, \"nome\": \"Debenture\" }]");
         }
     }
 }

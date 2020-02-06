@@ -6,7 +6,7 @@ namespace Domain.Models
 {
     public class TipoProduto
     {
-        public int idProduto { get; set; }
+        public int id { get; set; }
         public string nome { get; set; }
     }
 }

@@ -19,5 +19,11 @@ namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
             string sql = "SELECT * FROM Parametros WHERE IdProduto='" + id + "'";
             return conn.QueryAsync<Parametro> (sql);
         }
+
+        public Task<IEnumerable<string>> BuscarTodosNomes()
+        {
+            string sql = "SELECT Nome FROM Parametros";
+            return conn.QueryAsync<string>(sql);
+        }
     }
 }
