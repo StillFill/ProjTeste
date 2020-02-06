@@ -4,7 +4,7 @@ using Dapper.FluentMap.Dommel.Mapping;
 
 namespace Repository.Mappings
 {
-    public class ProdutosMap : DommelEntityMap<Produtos>
+    public class ProdutosMap : DommelEntityMap<Produto>
     {
         public ProdutosMap()
         {
@@ -13,6 +13,7 @@ namespace Repository.Mappings
             Map(i => i.Nome).ToColumn("Nome");
             Map(i => i.DataRemocao).ToColumn("DataRemocao");
             Map(i => i.IdProduto).ToColumn("IdProduto");
+            Map(i => i.Versao).ToColumn("Versao");
         }
     }
 }

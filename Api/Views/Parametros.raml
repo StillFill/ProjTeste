@@ -1,0 +1,66 @@
+﻿#%RAML 0.8
+
+title: Movies
+version: 1.0
+baseUri: http://movies.com/api
+mediaType: application/json
+protocols: [HTTP]
+
+/movies:
+
+  get:
+
+    description: gets all movies in the catalog
+    responses:
+      200:
+        body:
+          schema: |
+            { "$schema": "http://json-schema.org/draft-03/schema",
+              "type": "array",
+              "description": "movies",
+              "items":
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "integer" },
+                    "name": { "type": "string"},
+                    "director": { "type": "string"},
+                    "genre": { "type": "string" },
+                    "cast":{ "type": "string" },
+                    "duration":{ "type": "number" },
+                    "storyline":{ "type": "string" },
+                    "language":{ "type": "string" },
+                }
+              }
+            }
+          example: |
+            [
+              {
+                 "id" : "1",
+                 "name": "Big Fish",
+                 "director": "Tim Burton",
+                 "genre": "Drama, Fantasy",
+                 "cast": "Ewan McGregor, Albert Finney, Billy Crudup",
+                 "language": "English",
+              },
+              {
+                 "id" : "2",
+                 "name": "Midnight in Paris",
+                 "director": "Woody Allen",
+                 "genre": "Comedy",
+                 "cast": "Owen Wilson, Rachel McAdams, Kathy Bates",
+                 "language": "English",
+              },
+            ]
+      400:
+        body:
+          schema: |
+              { "$schema": "http://json-schema.org/draft-03/schema",
+                "type": "object",
+                "description": "bad request error",
+                "properties":
+                  {
+                    "error": { "type": "string"},
+                    "code": { "type": "integer" }
+                  }
+                }

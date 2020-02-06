@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces
 {
-    public interface IParametrosRepository : IRepositoryBase<Parametros> {
-        public Task<IEnumerable<Parametros>> BuscarPorIdProduto(object id);
+    public interface IParametrosRepository : IRepositoryBase<Parametro> {
+        public Task<IEnumerable<Parametro>> BuscarPorIdProduto(object id);
     }
 }

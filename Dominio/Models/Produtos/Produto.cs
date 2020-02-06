@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Models
 {
-    public class Produtos
+    public class Produto
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -12,14 +12,17 @@ namespace Domain.Models
 
         public int IdProduto { get; set; }
 
-        public Produtos(string Nome, int IdProduto)
+        public int Versao { get; set; }
+
+        public Produto(string nome, int idProduto, int versao)
         {
-            this.Nome = Nome;
-            this.IdProduto = IdProduto;
+            this.Nome = nome;
+            this.IdProduto = idProduto;
             this.DataRemocao = null;
+            this.Versao = versao;
         }
 
-        public Produtos()
+        public Produto()
         {
 
         }

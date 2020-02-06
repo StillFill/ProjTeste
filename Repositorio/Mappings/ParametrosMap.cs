@@ -2,7 +2,7 @@
 using Dominio.Models;
 using Dapper.FluentMap.Dommel.Mapping;
 
-public class ParametrosMap : DommelEntityMap<Parametros>
+public class ParametrosMap : DommelEntityMap<Parametro>
 {
     public ParametrosMap()
     {
