@@ -10,7 +10,6 @@ C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Api.runtimecon
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Api.dll
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Api.pdb
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Api.Views.dll
-C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Api.Views.pdb
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Dapper.dll
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Dapper.FluentMap.dll
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Dapper.FluentMap.Dommel.dll
@@ -127,17 +126,9 @@ C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Repository.pdb
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Services.pdb
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\staticwebassets\Api.StaticWebAssets.Manifest.cache
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\staticwebassets\Api.StaticWebAssets.xml
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.RazorAssemblyInfo.cache
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.RazorAssemblyInfo.cs
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfoInputs.cache
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfo.cs
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.TagHelpers.input.cache
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.TagHelpers.output.cache
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.RazorCoreGenerate.cache
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.RazorTargetAssemblyInfo.cache
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.RazorTargetAssemblyInfo.cs
-C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.Views.pdb
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.csproj.CopyComplete
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.dll
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.pdb
