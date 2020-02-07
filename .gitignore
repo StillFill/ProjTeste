@@ -1,5 +1,7 @@
 .vs/
 *.cache
+./Api/obj
+./Api/bin
 ./ApiTests/obj
 ./ApiTests/bin
 ./Dominio/obj
