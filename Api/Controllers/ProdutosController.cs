@@ -9,6 +9,7 @@ using System.Linq;
 using Api.ViewModels.Produtos;
 using Domain.Interfaces.Produtos;
 using Api.ViewModels;
+using AutoMapper;
 
 namespace Api.Controllers
 {
@@ -21,15 +22,17 @@ namespace Api.Controllers
         private readonly IProdutosRepository produtosRepository;
         private readonly ITipoProdutoService produtoServices;
         private readonly RequestHandler _requestHandler;
+        private readonly IMapper _mapper;
 
         private readonly GrupoViewModel viewModelServices = new GrupoViewModel();
 
-        public ProdutosController(IParametrosRepository parametrosRepository, IProdutosRepository produtosRepository, ITipoProdutoService tipoProdutoService)
+        public ProdutosController(IMapper mapper, IParametrosRepository parametrosRepository, IProdutosRepository produtosRepository, ITipoProdutoService tipoProdutoService)
         {
             this.parametrosRepository = parametrosRepository;
             this.produtosRepository = produtosRepository;
             this.produtoServices = tipoProdutoService;
             _requestHandler = new RequestHandler();
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -43,7 +46,7 @@ namespace Api.Controllers
         public async Task<ActionResult<IEnumerable<string>>> BuscarLabels()
         {
             IEnumerable<string> labels = await parametrosRepository.BuscarTodosNomes();
-            return Ok(labels);
+            return Ok(labels.Distinct());
         }
 
         [HttpGet("{idProdutoExterno}")]
@@ -51,7 +54,9 @@ namespace Api.Controllers
         {
             IEnumerable<Produto> produtos = await produtosRepository.BuscarPorIdProduto(idProdutoExterno);
 
-            if (produtos.Count() == 0) return Ok(new ProdutoViewModel(idProdutoExterno, null, new List<GrupoViewModel>(), 1));
+            List<GrupoViewModel> campos = new List<GrupoViewModel>();
+
+            if (produtos.Count() == 0) return Ok(new ProdutoViewModel(idProdutoExterno, null, campos, 0));
 
             Produto produto = produtos.First();
 
@@ -59,9 +64,9 @@ namespace Api.Controllers
 
             List<Parametro> parametros = (await parametrosRepository.BuscarPorIdProduto(idProduto)).ToList();
 
-            List<GrupoViewModel> prods = viewModelServices.AgruparParametrosPorGrupo(parametros);
+            campos = viewModelServices.AgruparParametrosPorGrupo(parametros);
 
-            ProdutoViewModel result = new ProdutoViewModel(idProdutoExterno, produto.Nome, prods, produto.Versao);
+            ProdutoViewModel result = new ProdutoViewModel(idProdutoExterno, produto.Nome, campos, produto.Versao);
 
             return Ok(result);
         }
@@ -84,7 +89,9 @@ namespace Api.Controllers
 
             int novaVersao = ultimaVersao + 1;
 
-            Produto novoProduto = new Produto(paramProdutos.NomeProduto, paramProdutos.IdProdutoExterno, novaVersao);
+            Produto novoProduto = _mapper.Map<Produto>(paramProdutos);
+            novoProduto.Versao = novaVersao;
+
             int idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
 
             foreach (Parametro paramProduto in paramProdutos.Campos)

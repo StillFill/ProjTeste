@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Domain.Interfaces.Produtos;
 using Services;
 using Repository.Mappings;
+using AutoMapper;
 
 namespace Api
 {
@@ -27,6 +28,8 @@ namespace Api
             services.AddScoped<IProdutosRepository, ProdutosRepository>();
 
             services.AddScoped<ITipoProdutoService, TipoProdutoService>();
+
+            services.AddAutoMapper(typeof(Startup));
 
             FluentMapper.Initialize(c =>
             {

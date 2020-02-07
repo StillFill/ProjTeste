@@ -15,6 +15,8 @@ namespace Api.ViewModels.Produtos
             Versao = versao;
         }
 
+        public ProdutoViewModel() { }
+
         public int Id { get; set; }
 
         public string Nome { get; set; }
