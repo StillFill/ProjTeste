@@ -39,6 +39,13 @@ namespace Api.Controllers
             return Ok(tiposProdutos);
         }
 
+        [HttpGet("labels")]
+        public async Task<ActionResult<IEnumerable<string>>> BuscarLabels()
+        {
+            IEnumerable<string> labels = await parametrosRepository.BuscarTodosNomes();
+            return Ok(labels);
+        }
+
         [HttpGet("{idProdutoExterno}")]
         public async Task<ActionResult<ProdutoViewModel>> BuscarPorId(int idProdutoExterno)
         {
@@ -57,13 +64,6 @@ namespace Api.Controllers
             ProdutoViewModel result = new ProdutoViewModel(idProdutoExterno, produto.Nome, prods, produto.Versao);
 
             return Ok(result);
-        }
-
-        [HttpGet("labels")]
-        public async Task<ActionResult<IEnumerable<string>>> BuscarLabels()
-        {
-            IEnumerable<string> labels = await parametrosRepository.BuscarTodosNomes();
-            return Ok(labels);
         }
 
         [HttpPost]
