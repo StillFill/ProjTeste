@@ -1,0 +1,25 @@
+{
+  "FilePath": "c:\\Users\\Zupper\\Desktop\\ProjTeste\\Api\\Api.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
+  "RootNamespace": "Api",
+  "Documents": [
+    {
+      "FilePath": "c:\\Users\\Zupper\\Desktop\\ProjTeste\\Api\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
+  "SerializationFormat": "0.2"
+}

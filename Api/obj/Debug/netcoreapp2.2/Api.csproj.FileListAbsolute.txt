@@ -1,0 +1,4 @@
+C:\Users\Zupper\Desktop\ProjTeste\Api\obj\Debug\netcoreapp2.2\Api.csprojAssemblyReference.cache
+C:\Users\Zupper\Desktop\ProjTeste\Api\obj\Debug\netcoreapp2.2\Api.csproj.CoreCompileInputs.cache
+C:\Users\Zupper\Desktop\ProjTeste\Api\obj\Debug\netcoreapp2.2\Api.AssemblyInfoInputs.cache
+C:\Users\Zupper\Desktop\ProjTeste\Api\obj\Debug\netcoreapp2.2\Api.AssemblyInfo.cs

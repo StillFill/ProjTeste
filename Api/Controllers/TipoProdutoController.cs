@@ -10,7 +10,7 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("tiposProdutos")]
-    public class TipoProdutoController : Controller
+    public class TipoProdutoController : ControllerBase
     {
         private readonly ITipoProdutoService produtoServices;
 

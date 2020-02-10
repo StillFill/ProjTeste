@@ -1,0 +1,11 @@
+C:\Users\Zupper\Desktop\ProjTeste\Services\bin\Debug\netcoreapp3.1\Services.deps.json
+C:\Users\Zupper\Desktop\ProjTeste\Services\bin\Debug\netcoreapp3.1\Services.dll
+C:\Users\Zupper\Desktop\ProjTeste\Services\bin\Debug\netcoreapp3.1\Services.pdb
+C:\Users\Zupper\Desktop\ProjTeste\Services\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\Zupper\Desktop\ProjTeste\Services\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\Zupper\Desktop\ProjTeste\Services\obj\Debug\netcoreapp3.1\Services.csprojAssemblyReference.cache
+C:\Users\Zupper\Desktop\ProjTeste\Services\obj\Debug\netcoreapp3.1\Services.AssemblyInfoInputs.cache
+C:\Users\Zupper\Desktop\ProjTeste\Services\obj\Debug\netcoreapp3.1\Services.AssemblyInfo.cs
+C:\Users\Zupper\Desktop\ProjTeste\Services\obj\Debug\netcoreapp3.1\Services.csproj.CopyComplete
+C:\Users\Zupper\Desktop\ProjTeste\Services\obj\Debug\netcoreapp3.1\Services.dll
+C:\Users\Zupper\Desktop\ProjTeste\Services\obj\Debug\netcoreapp3.1\Services.pdb

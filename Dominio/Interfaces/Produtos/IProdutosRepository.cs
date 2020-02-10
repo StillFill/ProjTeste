@@ -6,10 +6,10 @@ namespace Dominio.Interfaces
 {
     public interface IProdutosRepository : IRepositoryBase<Produtos>
     {
-        public Task<IEnumerable<Produtos>> BuscarPorIdProduto(int id);
+        Task<IEnumerable<Produtos>> BuscarPorIdProduto(int id);
 
-        public Task<int> AdicionarProduto(Produtos obj);
+        Task<int> AdicionarProduto(Produtos obj);
 
-        public Task<int> DesativarProduto(int id);
+        Task<int> DesativarProduto(int id);
     }
 }

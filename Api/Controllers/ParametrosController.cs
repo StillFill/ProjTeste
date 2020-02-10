@@ -12,7 +12,7 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("parametros")]
-    public class ParametrosController : Controller
+    public class ParametrosController : ControllerBase
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IParametrosRepository parametrosRepository;

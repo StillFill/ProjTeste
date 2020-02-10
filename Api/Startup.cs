@@ -5,10 +5,10 @@ using Dominio.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Domain.Interfaces.Produtos;
 using Services;
 using Repository.Mappings;
+using AutoMapper;
 
 namespace Api
 {
@@ -28,6 +28,8 @@ namespace Api
 
             services.AddScoped<ITipoProdutoService, TipoProdutoService>();
 
+            services.AddAutoMapper(typeof(Startup));
+
             FluentMapper.Initialize(c =>
             {
                 c.AddMap(new ParametrosMap());
@@ -37,7 +39,7 @@ namespace Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -58,7 +60,8 @@ namespace Api
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            }); ;
+            });
+
         }
     }
 }

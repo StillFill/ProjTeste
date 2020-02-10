@@ -1,7 +1,7 @@
 ﻿using Domain.Interfaces.Produtos;
 using Domain.Models;
 using System.Collections.Generic;
-using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Services
 {
@@ -15,8 +15,8 @@ namespace Services
                 IRestResponse response = await client.ExecuteAsync(request);
             */
 
-            return JsonSerializer
-                    .Deserialize<IEnumerable<TipoProduto>> ("[{ \"idProduto\": 1, \"nome\": \"Debenture\" }]");
+            return JsonConvert
+                    .DeserializeObject<IEnumerable<TipoProduto>> ("[{ \"idProduto\": 1, \"nome\": \"Debenture\" }]");
         }
     }
 }

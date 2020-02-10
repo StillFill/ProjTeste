@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace Api.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -18,13 +18,13 @@ namespace Api.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("Index page says hello");
-            return View();
+            return Ok("Ok");
         }
 
         public IActionResult Error()
         {
             _logger.LogInformation("Index page says hello");
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Ok(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

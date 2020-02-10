@@ -1,0 +1,12 @@
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.csprojAssemblyReference.cache
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.AssemblyInfoInputs.cache
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.AssemblyInfo.cs
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\bin\Debug\netcoreapp2.2\Repository.deps.json
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\bin\Debug\netcoreapp2.2\Repository.dll
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\bin\Debug\netcoreapp2.2\Repository.pdb
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\bin\Debug\netcoreapp2.2\Domain.dll
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\bin\Debug\netcoreapp2.2\Domain.pdb
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.csproj.CopyComplete
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.dll
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.pdb
+C:\Users\Zupper\Desktop\ProjTeste\Repositorio\obj\Debug\netcoreapp2.2\Repository.csproj.CoreCompileInputs.cache
