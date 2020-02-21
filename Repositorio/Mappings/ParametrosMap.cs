@@ -1,15 +1,18 @@
 ﻿using Dommel;
-using Dominio.Models;
 using Dapper.FluentMap.Dommel.Mapping;
+using Dominio.Models;
 
-public class ParametrosMap : DommelEntityMap<Parametro>
+namespace Repository.Mappings
 {
-    public ParametrosMap()
+    public class ParametrosMap : DommelEntityMap<Parametro>
     {
-        ToTable("Parametros");
-        Map(i => i.Id).ToColumn("Id").IsKey().IsIdentity();
-        Map(i => i.Nome).ToColumn("Nome");
-        Map(i => i.Grupo).ToColumn("Grupo");
-        Map(i => i.IdProduto).ToColumn("IdProduto");
+        public ParametrosMap()
+        {
+            ToTable("Parametros");
+            Map(i => i.Id).ToColumn("Id").IsKey().IsIdentity();
+            Map(i => i.Nome).ToColumn("Nome");
+            Map(i => i.Grupo).ToColumn("Grupo");
+            Map(i => i.IdProduto).ToColumn("IdProduto");
+        }
     }
 }

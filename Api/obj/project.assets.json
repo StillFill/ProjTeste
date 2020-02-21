@@ -28,18 +28,38 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Dapper/1.60.1": {
+      "Dapper/2.0.30": {
         "type": "package",
         "dependencies": {
-          "System.Data.SqlClient": "4.4.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0"
+          "System.Reflection.Emit.Lightweight": "4.6.0"
         },
         "compile": {
           "lib/netstandard2.0/Dapper.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "Dapper.Extensions.Linq/1.1.17": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.42.0",
+          "Dapper.Extensions.Linq.Core": "1.0.8"
+        },
+        "compile": {
+          "lib/net45/Dapper.Extensions.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Dapper.Extensions.Linq.dll": {}
+        }
+      },
+      "Dapper.Extensions.Linq.Core/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Dapper.Extensions.Linq.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Dapper.Extensions.Linq.Core.dll": {}
         }
       },
       "Dapper.FluentMap/1.8.0": {
@@ -66,6 +86,30 @@
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.FluentMap.Dommel.dll": {}
+        }
+      },
+      "Dapper.Repository/0.0.2": {
+        "type": "package",
+        "dependencies": {
+          "slf4net": "0.1.32.1"
+        },
+        "compile": {
+          "lib/net45/Dapper.Repository.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Dapper.Repository.dll": {}
+        }
+      },
+      "DapperExtensions/1.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.12.0"
+        },
+        "compile": {
+          "lib/net45/DapperExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/DapperExtensions.dll": {}
         }
       },
       "Dommel/1.11.0": {
@@ -1022,6 +1066,41 @@
           }
         }
       },
+      "slf4net/0.1.32.1": {
+        "type": "package",
+        "compile": {
+          "lib/net35/slf4net.dll": {}
+        },
+        "runtime": {
+          "lib/net35/slf4net.dll": {}
+        }
+      },
+      "SqlKata/1.1.7": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/QueryBuilder.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/QueryBuilder.dll": {}
+        }
+      },
+      "SqlKata.Execution/1.1.7": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SqlKata": "1.1.7",
+          "dapper": "1.50.5"
+        },
+        "compile": {
+          "lib/netstandard1.3/SqlKata.Execution.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SqlKata.Execution.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1636,19 +1715,13 @@
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
         }
       },
-      "System.Reflection.Emit.Lightweight/4.3.0": {
+      "System.Reflection.Emit.Lightweight/4.6.0": {
         "type": "package",
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
-        },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
+          "ref/netcoreapp2.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.Reflection.Extensions/4.3.0": {
@@ -1683,13 +1756,17 @@
           "ref/netstandard1.0/System.Reflection.Primitives.dll": {}
         }
       },
-      "System.Reflection.TypeExtensions/4.4.0": {
+      "System.Reflection.TypeExtensions/4.3.0": {
         "type": "package",
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
         "compile": {
-          "ref/netcoreapp2.0/_._": {}
+          "ref/netstandard1.5/_._": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/_._": {}
+          "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
@@ -2273,10 +2350,17 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Dapper": "2.0.30",
+          "Dapper.Extensions.Linq": "1.1.17",
+          "Dapper.Extensions.Linq.Core": "1.0.8",
           "Dapper.FluentMap": "1.8.0",
           "Dapper.FluentMap.Dommel": "1.7.0",
+          "Dapper.Repository": "0.0.2",
+          "DapperExtensions": "1.6.3",
           "Domain": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.1",
+          "SqlKata": "1.1.7",
+          "SqlKata.Execution": "1.1.7",
           "System.Data.SqlClient": "4.8.0",
           "Z.Dapper.Plus": "3.0.1"
         },
@@ -2335,21 +2419,43 @@
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
       ]
     },
-    "Dapper/1.60.1": {
-      "sha512": "zevW+iN5vYLIdsUb1ye6uHh4nJU5qxFWWvkOBCb3qAgOcc0065U0TBFMhWB3z2qLE6iLItiRVLZqusfWSSZZ1A==",
+    "Dapper/2.0.30": {
+      "sha512": "nL0VEpvunjIQ3jTI1x27b7BS3BnRnn5b2vhxsU2pWEd9SljF5WUQLoV/83qXTm0yaHmejRV/ndI3EApGlrgPqw==",
       "type": "package",
-      "path": "dapper/1.60.1",
+      "path": "dapper/2.0.30",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "dapper.1.60.1.nupkg.sha512",
+        "dapper.2.0.30.nupkg.sha512",
         "dapper.nuspec",
-        "lib/net451/Dapper.dll",
-        "lib/net451/Dapper.xml",
-        "lib/netstandard1.3/Dapper.dll",
-        "lib/netstandard1.3/Dapper.xml",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "Dapper.Extensions.Linq/1.1.17": {
+      "sha512": "99A5z0GrSERXx6nQEIT/RjHF5ZaCiUQD7qfZ56VS7jfoAop50rUqCpUnLNCXaULN2ox+TZdZIEsmBPtvWKxYDQ==",
+      "type": "package",
+      "path": "dapper.extensions.linq/1.1.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapper.extensions.linq.1.1.17.nupkg.sha512",
+        "dapper.extensions.linq.nuspec",
+        "lib/net45/Dapper.Extensions.Linq.dll"
+      ]
+    },
+    "Dapper.Extensions.Linq.Core/1.0.8": {
+      "sha512": "ejKrmz5YCBMmSAoDW4EkkiKc+sdVjR2J3nZo0mMC9+oEgmDyxuJNe1Wpj93zM38xorvQzV6zPbTWfIYzdadkng==",
+      "type": "package",
+      "path": "dapper.extensions.linq.core/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapper.extensions.linq.core.1.0.8.nupkg.sha512",
+        "dapper.extensions.linq.core.nuspec",
+        "lib/net45/Dapper.Extensions.Linq.Core.dll"
       ]
     },
     "Dapper.FluentMap/1.8.0": {
@@ -2384,6 +2490,33 @@
         "lib/netstandard1.3/Dapper.FluentMap.Dommel.xml",
         "lib/netstandard2.0/Dapper.FluentMap.Dommel.dll",
         "lib/netstandard2.0/Dapper.FluentMap.Dommel.xml"
+      ]
+    },
+    "Dapper.Repository/0.0.2": {
+      "sha512": "Nj2bMAbPsjLFjtssoKCP098qsufqb1kOFspqTd3+CyUNmMjeAbL4J3iJRTgMxj+Gyr7eBdfsUsEZ0RMwf+qjOQ==",
+      "type": "package",
+      "path": "dapper.repository/0.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapper.repository.0.0.2.nupkg.sha512",
+        "dapper.repository.nuspec",
+        "lib/net45/Dapper.Repository.dll"
+      ]
+    },
+    "DapperExtensions/1.6.3": {
+      "sha512": "KrmiZVbSu8NcjcdteDfuLKEES8ZA/HOHyDO4n5Gvc2CuSxulaRaEPofr0zCH7LM/yevi2gSnA5GlOGYj8Ayd6w==",
+      "type": "package",
+      "path": "dapperextensions/1.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapperextensions.1.6.3.nupkg.sha512",
+        "dapperextensions.nuspec",
+        "lib/net40/DapperExtensions.dll",
+        "lib/net40/DapperExtensions.pdb",
+        "lib/net45/DapperExtensions.dll",
+        "lib/net45/DapperExtensions.pdb"
       ]
     },
     "Dommel/1.11.0": {
@@ -3903,6 +4036,45 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "slf4net/0.1.32.1": {
+      "sha512": "bxwUNpWhZh2LHDgn8FIBdq7WNSomZpCiwkJwBQLzXZhd90mxviy6Kc2Rq4kJEWiTPnnCATDWUqaB6UcJoQMpVA==",
+      "type": "package",
+      "path": "slf4net/0.1.32.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/slf4net.dll",
+        "lib/net35/slf4net.xml",
+        "slf4net.0.1.32.1.nupkg.sha512",
+        "slf4net.nuspec"
+      ]
+    },
+    "SqlKata/1.1.7": {
+      "sha512": "KLWXFCrDOnPn5otEmhkdy12hepK2jylLkveqWYWkLW2XQzuSxl1ctGqe/6VIvo+AQQlrU6SjWOVmoTFAhJQ7mw==",
+      "type": "package",
+      "path": "sqlkata/1.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/QueryBuilder.dll",
+        "lib/netstandard1.0/QueryBuilder.dll",
+        "sqlkata.1.1.7.nupkg.sha512",
+        "sqlkata.nuspec"
+      ]
+    },
+    "SqlKata.Execution/1.1.7": {
+      "sha512": "oCZ3KDsqH5/jVEgDLYhsgbelMkKLLKFgpPX6/zWMOoIhgBxXx3yptVsrQSKeiy7kXI1EudGG5zYOi04ps3fe3g==",
+      "type": "package",
+      "path": "sqlkata.execution/1.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/SqlKata.Execution.dll",
+        "lib/netstandard1.3/SqlKata.Execution.dll",
+        "sqlkata.execution.1.1.7.nupkg.sha512",
+        "sqlkata.execution.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -5714,20 +5886,26 @@
         "system.reflection.emit.ilgeneration.nuspec"
       ]
     },
-    "System.Reflection.Emit.Lightweight/4.3.0": {
-      "sha512": "oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
+    "System.Reflection.Emit.Lightweight/4.6.0": {
+      "sha512": "j/V5HVvxvBQ7uubYD0PptQW2KGsi1Pc2kZ9yfwLixv3ADdjL/4M78KyC5e+ymW612DY8ZE4PFoZmWpoNmN2mqg==",
       "type": "package",
-      "path": "system.reflection.emit.lightweight/4.3.0",
+      "path": "system.reflection.emit.lightweight/4.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net45/_._",
         "lib/netcore50/System.Reflection.Emit.Lightweight.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Reflection.Emit.Lightweight.dll",
+        "lib/netstandard1.0/System.Reflection.Emit.Lightweight.xml",
         "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll",
+        "lib/netstandard2.0/System.Reflection.Emit.Lightweight.dll",
+        "lib/netstandard2.0/System.Reflection.Emit.Lightweight.xml",
+        "lib/netstandard2.1/_._",
         "lib/portable-net45+wp8/_._",
         "lib/wp80/_._",
         "lib/xamarinios10/_._",
@@ -5737,6 +5915,7 @@
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
+        "ref/netcoreapp2.0/_._",
         "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll",
         "ref/netstandard1.0/System.Reflection.Emit.Lightweight.xml",
         "ref/netstandard1.0/de/System.Reflection.Emit.Lightweight.xml",
@@ -5748,15 +5927,21 @@
         "ref/netstandard1.0/ru/System.Reflection.Emit.Lightweight.xml",
         "ref/netstandard1.0/zh-hans/System.Reflection.Emit.Lightweight.xml",
         "ref/netstandard1.0/zh-hant/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard2.0/System.Reflection.Emit.Lightweight.dll",
+        "ref/netstandard2.0/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard2.1/_._",
         "ref/portable-net45+wp8/_._",
         "ref/wp80/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/_._",
-        "system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
-        "system.reflection.emit.lightweight.nuspec"
+        "runtimes/aot/lib/netcore50/System.Reflection.Emit.Lightweight.dll",
+        "runtimes/aot/lib/netcore50/System.Reflection.Emit.Lightweight.xml",
+        "system.reflection.emit.lightweight.4.6.0.nupkg.sha512",
+        "system.reflection.emit.lightweight.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Reflection.Extensions/4.3.0": {
@@ -5894,25 +6079,21 @@
         "system.reflection.primitives.nuspec"
       ]
     },
-    "System.Reflection.TypeExtensions/4.4.0": {
-      "sha512": "dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
+    "System.Reflection.TypeExtensions/4.3.0": {
+      "sha512": "7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
       "type": "package",
-      "path": "system.reflection.typeextensions/4.4.0",
+      "path": "system.reflection.typeextensions/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net46/System.Reflection.TypeExtensions.dll",
-        "lib/net461/System.Reflection.TypeExtensions.dll",
+        "lib/net462/System.Reflection.TypeExtensions.dll",
         "lib/netcore50/System.Reflection.TypeExtensions.dll",
-        "lib/netcoreapp1.0/System.Reflection.TypeExtensions.dll",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.3/System.Reflection.TypeExtensions.dll",
         "lib/netstandard1.5/System.Reflection.TypeExtensions.dll",
-        "lib/netstandard2.0/System.Reflection.TypeExtensions.dll",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
@@ -5920,9 +6101,7 @@
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.Reflection.TypeExtensions.dll",
-        "ref/net461/System.Reflection.TypeExtensions.dll",
-        "ref/net461/System.Reflection.TypeExtensions.xml",
-        "ref/netcoreapp2.0/_._",
+        "ref/net462/System.Reflection.TypeExtensions.dll",
         "ref/netstandard1.3/System.Reflection.TypeExtensions.dll",
         "ref/netstandard1.3/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.3/de/System.Reflection.TypeExtensions.xml",
@@ -5945,17 +6124,13 @@
         "ref/netstandard1.5/ru/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.5/zh-hans/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.5/zh-hant/System.Reflection.TypeExtensions.xml",
-        "ref/netstandard2.0/System.Reflection.TypeExtensions.dll",
-        "ref/netstandard2.0/System.Reflection.TypeExtensions.xml",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll",
-        "system.reflection.typeextensions.4.4.0.nupkg.sha512",
-        "system.reflection.typeextensions.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.reflection.typeextensions.4.3.0.nupkg.sha512",
+        "system.reflection.typeextensions.nuspec"
       ]
     },
     "System.Resources.ResourceManager/4.3.0": {
@@ -7621,6 +7796,46 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+      "message": "O pacote 'Dapper.Extensions.Linq 1.1.17' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Dapper.Extensions.Linq",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Dapper.Extensions.Linq.Core 1.0.8' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Dapper.Extensions.Linq.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Dapper.Repository 0.0.2' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Dapper.Repository",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'DapperExtensions 1.6.3' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "DapperExtensions",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
       "message": "O pacote 'Microsoft.AspNet.Mvc 5.2.7' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
       "libraryId": "Microsoft.AspNet.Mvc",
       "targetGraphs": [
@@ -7653,6 +7868,16 @@
       "warningLevel": 1,
       "message": "O pacote 'Microsoft.Web.Infrastructure 1.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
       "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'slf4net 0.1.32.1' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "slf4net",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"
       ]

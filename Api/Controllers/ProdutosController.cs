@@ -52,7 +52,8 @@ namespace Api.Controllers
         [HttpGet("{idProdutoExterno}")]
         public async Task<ActionResult<ProdutoViewModel>> BuscarPorId(int idProdutoExterno)
         {
-            IEnumerable<Produto> produtos = await produtosRepository.BuscarPorIdProduto(idProdutoExterno);
+
+            IEnumerable<Produto> produtos = produtosRepository.BuscarPorIdProduto(idProdutoExterno);
 
             List<GrupoViewModel> campos = new List<GrupoViewModel>();
 
@@ -75,7 +76,7 @@ namespace Api.Controllers
         public async Task<ActionResult> CadastrarParametros([FromBody] CadastroProdutoViewModel paramProdutos)
         {
 
-            IEnumerable<Produto> produtos = await produtosRepository.BuscarPorIdProduto(paramProdutos.IdProdutoExterno);
+            IEnumerable<Produto> produtos = produtosRepository.BuscarPorIdProduto(paramProdutos.IdProdutoExterno);
 
             int ultimaVersao = 0;
 
@@ -84,7 +85,7 @@ namespace Api.Controllers
                 Produto ultimoProduto = produtos.Last();
 
                 ultimaVersao = ultimoProduto.Versao;
-                await produtosRepository.DesativarProduto(ultimoProduto.Id);
+                produtosRepository.DesativarProduto(ultimoProduto.Id);
             }
 
             int novaVersao = ultimaVersao + 1;
@@ -94,7 +95,7 @@ namespace Api.Controllers
 
             int idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
 
-            foreach (Parametro paramProduto in paramProdutos.Campos)
+            foreach (Grupo paramProduto in paramProdutos.Campos)
             {
                 paramProduto.IdProduto = idProduto;
                 await parametrosRepository.Adicionar(paramProduto);

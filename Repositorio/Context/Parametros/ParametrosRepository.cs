@@ -10,7 +10,7 @@ using Dapper;
 
 namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 {
-    public class ParametrosRepository : RepositoryBase<Parametro>, IParametrosRepository
+    public class ParametrosRepository : RepositoryBase<Grupo>, IParametrosRepository
     {
         public ParametrosRepository(IConfiguration configuration) : base(configuration) {}
 

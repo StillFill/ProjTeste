@@ -134,3 +134,10 @@ C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.pdb
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Zupper\source\repos\ItauProj\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Dapper.Extensions.Linq.Core.dll
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\DapperExtensions.dll
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Dapper.Repository.dll
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\slf4net.dll
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\Dapper.Extensions.Linq.dll
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\QueryBuilder.dll
+C:\Users\Zupper\source\repos\ItauProj\Api\bin\Debug\netcoreapp3.1\SqlKata.Execution.dll

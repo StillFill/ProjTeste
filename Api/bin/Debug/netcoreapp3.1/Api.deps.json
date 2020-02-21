@@ -341,25 +341,49 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Dapper/1.60.1": {
+      "Dapper/2.0.30": {
         "dependencies": {
-          "System.Data.SqlClient": "4.8.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0"
+          "System.Reflection.Emit.Lightweight": "4.6.0"
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.dll": {
-            "assemblyVersion": "1.60.0.0",
-            "fileVersion": "1.60.1.8373"
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.30.32292"
           }
         },
         "compile": {
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
+      "Dapper.Extensions.Linq/1.1.17": {
+        "dependencies": {
+          "Dapper": "2.0.30",
+          "Dapper.Extensions.Linq.Core": "1.0.8"
+        },
+        "runtime": {
+          "lib/net45/Dapper.Extensions.Linq.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net45/Dapper.Extensions.Linq.dll": {}
+        }
+      },
+      "Dapper.Extensions.Linq.Core/1.0.8": {
+        "runtime": {
+          "lib/net45/Dapper.Extensions.Linq.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net45/Dapper.Extensions.Linq.Core.dll": {}
+        }
+      },
       "Dapper.FluentMap/1.8.0": {
         "dependencies": {
-          "Dapper": "1.60.1"
+          "Dapper": "2.0.30"
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.FluentMap.dll": {
@@ -373,7 +397,7 @@
       },
       "Dapper.FluentMap.Dommel/1.7.0": {
         "dependencies": {
-          "Dapper": "1.60.1",
+          "Dapper": "2.0.30",
           "Dapper.FluentMap": "1.8.0",
           "Dommel": "1.11.0"
         },
@@ -387,9 +411,37 @@
           "lib/netstandard2.0/Dapper.FluentMap.Dommel.dll": {}
         }
       },
+      "Dapper.Repository/0.0.2": {
+        "dependencies": {
+          "slf4net": "0.1.32.1"
+        },
+        "runtime": {
+          "lib/net45/Dapper.Repository.dll": {
+            "assemblyVersion": "0.0.2.0",
+            "fileVersion": "0.0.2.0"
+          }
+        },
+        "compile": {
+          "lib/net45/Dapper.Repository.dll": {}
+        }
+      },
+      "DapperExtensions/1.6.3": {
+        "dependencies": {
+          "Dapper": "2.0.30"
+        },
+        "runtime": {
+          "lib/net45/DapperExtensions.dll": {
+            "assemblyVersion": "1.6.3.0",
+            "fileVersion": "1.6.3.0"
+          }
+        },
+        "compile": {
+          "lib/net45/DapperExtensions.dll": {}
+        }
+      },
       "Dommel/1.11.0": {
         "dependencies": {
-          "Dapper": "1.60.1",
+          "Dapper": "2.0.30",
           "System.ComponentModel.Annotations": "4.5.0"
         },
         "runtime": {
@@ -1221,6 +1273,47 @@
           }
         }
       },
+      "slf4net/0.1.32.1": {
+        "runtime": {
+          "lib/net35/slf4net.dll": {
+            "assemblyVersion": "0.1.32.1",
+            "fileVersion": "0.1.32.1"
+          }
+        },
+        "compile": {
+          "lib/net35/slf4net.dll": {}
+        }
+      },
+      "SqlKata/1.1.7": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.0/QueryBuilder.dll": {
+            "assemblyVersion": "1.1.7.0",
+            "fileVersion": "1.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.0/QueryBuilder.dll": {}
+        }
+      },
+      "SqlKata.Execution/1.1.7": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SqlKata": "1.1.7",
+          "Dapper": "2.0.30"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SqlKata.Execution.dll": {
+            "assemblyVersion": "1.1.7.0",
+            "fileVersion": "1.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/SqlKata.Execution.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1568,10 +1661,10 @@
           "System.Reflection": "4.3.0",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.6.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1661,14 +1754,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.Emit.Lightweight/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
+      "System.Reflection.Emit.Lightweight/4.6.0": {},
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1685,7 +1771,12 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.TypeExtensions/4.4.0": {},
+      "System.Reflection.TypeExtensions/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -2009,10 +2100,17 @@
       },
       "Repository/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.30",
+          "Dapper.Extensions.Linq": "1.1.17",
+          "Dapper.Extensions.Linq.Core": "1.0.8",
           "Dapper.FluentMap": "1.8.0",
           "Dapper.FluentMap.Dommel": "1.7.0",
+          "Dapper.Repository": "0.0.2",
+          "DapperExtensions": "1.6.3",
           "Domain": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.1",
+          "SqlKata": "1.1.7",
+          "SqlKata.Execution": "1.1.7",
           "System.Data.SqlClient": "4.8.0",
           "Z.Dapper.Plus": "3.0.1"
         },
@@ -3690,12 +3788,26 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/7.0.0",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512"
     },
-    "Dapper/1.60.1": {
+    "Dapper/2.0.30": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zevW+iN5vYLIdsUb1ye6uHh4nJU5qxFWWvkOBCb3qAgOcc0065U0TBFMhWB3z2qLE6iLItiRVLZqusfWSSZZ1A==",
-      "path": "dapper/1.60.1",
-      "hashPath": "dapper.1.60.1.nupkg.sha512"
+      "sha512": "sha512-nL0VEpvunjIQ3jTI1x27b7BS3BnRnn5b2vhxsU2pWEd9SljF5WUQLoV/83qXTm0yaHmejRV/ndI3EApGlrgPqw==",
+      "path": "dapper/2.0.30",
+      "hashPath": "dapper.2.0.30.nupkg.sha512"
+    },
+    "Dapper.Extensions.Linq/1.1.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-99A5z0GrSERXx6nQEIT/RjHF5ZaCiUQD7qfZ56VS7jfoAop50rUqCpUnLNCXaULN2ox+TZdZIEsmBPtvWKxYDQ==",
+      "path": "dapper.extensions.linq/1.1.17",
+      "hashPath": "dapper.extensions.linq.1.1.17.nupkg.sha512"
+    },
+    "Dapper.Extensions.Linq.Core/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ejKrmz5YCBMmSAoDW4EkkiKc+sdVjR2J3nZo0mMC9+oEgmDyxuJNe1Wpj93zM38xorvQzV6zPbTWfIYzdadkng==",
+      "path": "dapper.extensions.linq.core/1.0.8",
+      "hashPath": "dapper.extensions.linq.core.1.0.8.nupkg.sha512"
     },
     "Dapper.FluentMap/1.8.0": {
       "type": "package",
@@ -3710,6 +3822,20 @@
       "sha512": "sha512-q09fK33EfJDSUBQxTwvuJ/MOe9TlAFsV6ygBsnaJvit77fF6YzqOat4xHIGrbovXafMINeXHq6eH7SfGt52PzA==",
       "path": "dapper.fluentmap.dommel/1.7.0",
       "hashPath": "dapper.fluentmap.dommel.1.7.0.nupkg.sha512"
+    },
+    "Dapper.Repository/0.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nj2bMAbPsjLFjtssoKCP098qsufqb1kOFspqTd3+CyUNmMjeAbL4J3iJRTgMxj+Gyr7eBdfsUsEZ0RMwf+qjOQ==",
+      "path": "dapper.repository/0.0.2",
+      "hashPath": "dapper.repository.0.0.2.nupkg.sha512"
+    },
+    "DapperExtensions/1.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KrmiZVbSu8NcjcdteDfuLKEES8ZA/HOHyDO4n5Gvc2CuSxulaRaEPofr0zCH7LM/yevi2gSnA5GlOGYj8Ayd6w==",
+      "path": "dapperextensions/1.6.3",
+      "hashPath": "dapperextensions.1.6.3.nupkg.sha512"
     },
     "Dommel/1.11.0": {
       "type": "package",
@@ -4166,6 +4292,27 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "slf4net/0.1.32.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bxwUNpWhZh2LHDgn8FIBdq7WNSomZpCiwkJwBQLzXZhd90mxviy6Kc2Rq4kJEWiTPnnCATDWUqaB6UcJoQMpVA==",
+      "path": "slf4net/0.1.32.1",
+      "hashPath": "slf4net.0.1.32.1.nupkg.sha512"
+    },
+    "SqlKata/1.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KLWXFCrDOnPn5otEmhkdy12hepK2jylLkveqWYWkLW2XQzuSxl1ctGqe/6VIvo+AQQlrU6SjWOVmoTFAhJQ7mw==",
+      "path": "sqlkata/1.1.7",
+      "hashPath": "sqlkata.1.1.7.nupkg.sha512"
+    },
+    "SqlKata.Execution/1.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oCZ3KDsqH5/jVEgDLYhsgbelMkKLLKFgpPX6/zWMOoIhgBxXx3yptVsrQSKeiy7kXI1EudGG5zYOi04ps3fe3g==",
+      "path": "sqlkata.execution/1.1.7",
+      "hashPath": "sqlkata.execution.1.1.7.nupkg.sha512"
+    },
     "System.AppContext/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4425,12 +4572,12 @@
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "hashPath": "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.Emit.Lightweight/4.3.0": {
+    "System.Reflection.Emit.Lightweight/4.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
-      "path": "system.reflection.emit.lightweight/4.3.0",
-      "hashPath": "system.reflection.emit.lightweight.4.3.0.nupkg.sha512"
+      "sha512": "sha512-j/V5HVvxvBQ7uubYD0PptQW2KGsi1Pc2kZ9yfwLixv3ADdjL/4M78KyC5e+ymW612DY8ZE4PFoZmWpoNmN2mqg==",
+      "path": "system.reflection.emit.lightweight/4.6.0",
+      "hashPath": "system.reflection.emit.lightweight.4.6.0.nupkg.sha512"
     },
     "System.Reflection.Extensions/4.3.0": {
       "type": "package",
@@ -4453,12 +4600,12 @@
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.TypeExtensions/4.4.0": {
+    "System.Reflection.TypeExtensions/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
-      "path": "system.reflection.typeextensions/4.4.0",
-      "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
+      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+      "path": "system.reflection.typeextensions/4.3.0",
+      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",

@@ -4,7 +4,7 @@ using Dapper.FluentMap.Dommel.Mapping;
 
 namespace Repository.Mappings
 {
-    public class ProdutosMap : DommelEntityMap<Produto>
+    public class ProdutosMap : DommelEntityMap<Produto>, IDommelEntityMap
     {
         public ProdutosMap()
         {
