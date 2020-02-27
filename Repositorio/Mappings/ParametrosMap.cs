@@ -9,10 +9,10 @@ namespace Repository.Mappings
         public ParametrosMap()
         {
             ToTable("Parametros");
-            Map(i => i.Id).ToColumn("Id").IsKey().IsIdentity();
-            Map(i => i.Nome).ToColumn("Nome");
-            Map(i => i.Grupo).ToColumn("Grupo");
-            Map(i => i.IdProduto).ToColumn("IdProduto");
+            Map(i => i.Id).ToColumn("ID_PARAM").IsKey().IsIdentity();
+            Map(i => i.Nome).ToColumn("NAME_PARAM");
+            Map(i => i.Grupo).ToColumn("GRUPO_PARAM");
+            Map(i => i.IdProduto).ToColumn("ID_PROD");
         }
     }
 }

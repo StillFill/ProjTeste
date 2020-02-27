@@ -25,9 +25,17 @@ namespace AspnetCore.EFCore_Dapper.Data.Repositories.Dapper
 
         public IEnumerable<Produto> BuscarPorIdProduto(int id) 
         {
-            var builder = _sqlBuilder.Select().Where(a => a.IdProduto, id);
+            var builder = _sqlBuilder.Select()
+                                .Innerjoin<ParametrosMap>()
+                                .On<Parametro>(a => a.Id, b => b.IdProduto)
+                                .Innerjoin<GruposMap>()
+                                .On<Grupo>(a => a.Id, b => b.IdProduto);
 
-            return conn.Query<Produto>(builder.GetQuery(), param: builder.GetArgs());
+            string sql = builder.GetQuery();
+
+            return conn.Query<Produto, Parametro, Grupo, Produto>(builder.GetQuery(), param: builder.GetArgs(), map: (prod, param, grupo) => {
+                return prod;
+            });
         }
 
         public int DesativarProduto(int id)

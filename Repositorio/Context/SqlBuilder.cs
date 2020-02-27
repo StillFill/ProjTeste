@@ -16,18 +16,13 @@ namespace Repository.Context
         where TEntity : class
     {
 
-        private SqlConnection conn;
         private TMap mapping = new TMap();
         public string sqlString = "";
         private Dictionary<string, object> arguments = new Dictionary<string, object>();
         private IDommelEntityMap mappingInnerJoin;
 
         List<string> mappedColumns = new List<string>();
-
-        public SqlBuilder(SqlConnection conn)
-        {
-            this.conn = conn;
-        }
+        List<string> lockedColumns = new List<string>();
 
         private List<PropertyInfo> GetAttributesList<TClass>(TClass templateobject)
             where TClass : class
@@ -37,40 +32,16 @@ namespace Repository.Context
                  .ToList();
         }
 
-        private void addAttributesToSelect(IDommelEntityMap currentMap)
+        private void ResetValues()
         {
-            foreach(IPropertyMap map in currentMap.PropertyMaps)
-            {
-                if (map.ColumnName != map.PropertyInfo.Name)
-                {
-                    mappedColumns.Add(map.ColumnName + " as " + map.PropertyInfo.Name);
-                } else
-                {
-                    mappedColumns.Add(currentMap.TableName + "." + map.PropertyInfo.Name);
-                }
-            }
-        }
-
-        public SqlBuilder<TEntity, TMap> Select()
-        {
-            sqlString = "SELECT * From " + mapping.TableName;
-
-            this.addAttributesToSelect(mapping);
-
             arguments = new Dictionary<string, object>();
-
-            return this;
+            mapping = new TMap();
+            sqlString = "";
+            mappingInnerJoin = null;
+            mappedColumns = new List<string>();
         }
 
-        public SqlBuilder<TEntity, TMap> Update()
-        {
-            sqlString = "UPDATE " + mapping.TableName + " SET ";
-            arguments = new Dictionary<string, object>();
-
-            return this;
-        }
-
-        private void buildArgs<TClass>(string type, TClass templateobject, List<PropertyInfo> attributesList)
+        private void addStatementWithArgs<TClass>(string type, TClass templateobject, List<PropertyInfo> attributesList)
         {
 
             int listSize = attributesList.Count;
@@ -89,9 +60,85 @@ namespace Repository.Context
 
                 arguments.Add(argSequence, x.GetValue(templateobject));
 
-                sqlString +=  mapping.TableName + "." + prop + " = @" + argSequence;
+                sqlString += mapping.TableName + "." + prop + " = @" + argSequence;
 
             });
+        }
+
+        private void addAttributesToSelect(IDommelEntityMap currentMap)
+        {
+            foreach(IPropertyMap map in currentMap.PropertyMaps)
+            {
+                if (map.ColumnName != map.PropertyInfo.Name)
+                {
+                    mappedColumns.Add(map.ColumnName + " as " + map.PropertyInfo.Name);
+                } else
+                {
+                    mappedColumns.Add(currentMap.TableName + "." + map.PropertyInfo.Name);
+                }
+            }
+        }
+
+        private void addWhereToString(IDommelEntityMap currentMap, string prop, object value)
+        {
+            string mappedCollumn = currentMap.PropertyMaps.First(a => a.PropertyInfo.Name == prop).ColumnName;
+
+            if (value.GetType().Name != "Int32")
+            {
+                value = "'" + value + "'";
+            }
+
+            sqlString += " WHERE " + currentMap.TableName + "." + mappedCollumn + " = " + value;
+        }
+
+        private string GetAttributeName<T>(Expression<Func<T, object>> func)
+        {
+            MemberExpression body = func.Body as MemberExpression;
+
+            if (body == null)
+            {
+                UnaryExpression ubody = (UnaryExpression)func.Body;
+                body = ubody.Operand as MemberExpression;
+            }
+
+            return body.Member.Name;
+        }
+
+        private string GetMappedAttribute(IDommelEntityMap mapp, string prop)
+        {
+            return mapp.PropertyMaps.First(a => a.PropertyInfo.Name == prop).ColumnName;
+        }
+
+        public SqlBuilder<TEntity, TMap> Select(TEntity templateobject = null)
+        {
+
+            this.ResetValues();
+
+
+            if (templateobject != null)
+            {
+                List<PropertyInfo> attributesList = this.GetAttributesList(templateobject);
+
+                foreach (PropertyInfo att in attributesList)
+                {
+                    lockedColumns.Add(this.GetMappedAttribute(mapping, att.Name));
+                }
+            }
+
+            sqlString = "SELECT * From " + mapping.TableName;
+
+            this.addAttributesToSelect(mapping);
+
+            return this;
+        }
+
+        public SqlBuilder<TEntity, TMap> Update()
+        {
+            this.ResetValues();
+
+            sqlString = "UPDATE " + mapping.TableName + " SET ";
+
+            return this;
         }
 
         public SqlBuilder<TEntity, TMap> Set(TEntity templateobject)
@@ -99,28 +146,16 @@ namespace Repository.Context
 
             List<PropertyInfo> attributesList = this.GetAttributesList(templateobject);
 
-            this.buildArgs(",", templateobject, attributesList);
+            this.addStatementWithArgs(",", templateobject, attributesList);
 
             return this;
-        }
-
-        private void SetEqualStatement(IDommelEntityMap currentMap, string prop, object value)
-        {
-            string mappedCollumn = mapping.PropertyMaps.First(a => a.PropertyInfo.Name == prop).ColumnName;
-
-            if (value.GetType().Name != "Int32")
-            {
-                value = "'" + value + "'";
-            }
-
-            sqlString += " WHERE " + mapping.TableName + "." + mappedCollumn + " = " + value;
         }
 
         public SqlBuilder<TEntity, TMap> Where(Expression<Func<TEntity, object>> f1, object value)
         {
             string prop = this.GetAttributeName(f1);
 
-            this.SetEqualStatement(mapping, prop, value);
+            this.addWhereToString(mapping, prop, value);
 
             return this;
         }
@@ -129,7 +164,7 @@ namespace Repository.Context
         {
             List<PropertyInfo> attributesList = this.GetAttributesList(templateobject);
 
-            this.buildArgs("AND", templateobject, attributesList);
+            this.addStatementWithArgs("AND", templateobject, attributesList);
 
             return this;
         }
@@ -158,7 +193,7 @@ namespace Repository.Context
         {
             List<PropertyInfo> attributesList = this.GetAttributesList(templateobject);
 
-            this.buildArgs("OR", templateobject, attributesList);
+            this.addStatementWithArgs("OR", templateobject, attributesList);
 
             return this;
         }
@@ -175,24 +210,6 @@ namespace Repository.Context
             this.addAttributesToSelect(joinMapping);
 
             return this;
-        }
-
-        public string GetAttributeName<T>(Expression<Func<T, object>> func)
-        {
-            MemberExpression body = func.Body as MemberExpression;
-
-            if (body == null)
-            {
-                UnaryExpression ubody = (UnaryExpression)func.Body;
-                body = ubody.Operand as MemberExpression;
-            }
-
-            return body.Member.Name;
-        }
-
-        private string GetMappedAttribute(IDommelEntityMap mapp, string prop)
-        {
-            return mapp.PropertyMaps.First(a => a.PropertyInfo.Name == prop).ColumnName;
         }
 
         public SqlBuilder<TEntity, TMap> On<T1>(Expression<Func<TEntity, object>> f1, Expression<Func<T1, object>> f2)
@@ -216,10 +233,17 @@ namespace Repository.Context
 
             int i = 0;
 
-            foreach(string mapCol in mappedColumns)
+            List<string> mapList = mappedColumns;
+
+            if (lockedColumns.Count > 0)
+            {
+                mapList = lockedColumns;
+            }
+
+            foreach(string mapCol in mapList)
             {
 
-                if (i == mappedColumns.Count - 1)
+                if (i == mapList.Count - 1)
                 {
                     attrs += mapCol;
                 } 

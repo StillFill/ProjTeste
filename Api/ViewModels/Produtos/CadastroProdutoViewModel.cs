@@ -12,6 +12,6 @@ namespace Api.ViewModels.Produtos
 
         public string NomeProduto { get; set; }
 
-        public IEnumerable<Grupo> Campos { get; set; }
+        public IEnumerable<Parametro> Campos { get; set; }
     }
 }

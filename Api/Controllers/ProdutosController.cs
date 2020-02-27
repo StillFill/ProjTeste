@@ -95,7 +95,7 @@ namespace Api.Controllers
 
             int idProduto = (int) (await produtosRepository.Adicionar(novoProduto));
 
-            foreach (Grupo paramProduto in paramProdutos.Campos)
+            foreach (Parametro paramProduto in paramProdutos.Campos)
             {
                 paramProduto.IdProduto = idProduto;
                 await parametrosRepository.Adicionar(paramProduto);

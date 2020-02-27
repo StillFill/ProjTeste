@@ -9,11 +9,11 @@ namespace Repository.Mappings
         public ProdutosMap()
         {
             ToTable("Produtos");
-            Map(i => i.Id).ToColumn("Id").IsKey().IsIdentity();
-            Map(i => i.Nome).ToColumn("Nome");
-            Map(i => i.DataRemocao).ToColumn("DataRemocao");
-            Map(i => i.IdProduto).ToColumn("IdProduto");
-            Map(i => i.Versao).ToColumn("Versao");
+            Map(i => i.Id).ToColumn("ID_PRODUT").IsKey().IsIdentity();
+            Map(i => i.Nome).ToColumn("NAME_PROD");
+            Map(i => i.DataRemocao).ToColumn("REMOC_DATE");
+            Map(i => i.IdProduto).ToColumn("ID_PROD_EXT");
+            Map(i => i.Versao).ToColumn("VERSAO");
         }
     }
 }
