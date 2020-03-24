@@ -1,13 +1,10 @@
-﻿using Dapper.FluentMap.Dommel.Mapping;
-using System.Data.SqlClient;
-using Dapper;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System;
-using System.Linq.Expressions;
-using System.Linq;
-using System.Reflection;
+using Dapper.FluentMap.Dommel.Mapping;
 using Dapper.FluentMap.Mapping;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Repository.Context
 {
@@ -15,14 +12,13 @@ namespace Repository.Context
         where TMap : IDommelEntityMap, new()
         where TEntity : class
     {
-
         private TMap mapping = new TMap();
-        public string sqlString = "";
+        private string sqlString = string.Empty;
         private Dictionary<string, object> arguments = new Dictionary<string, object>();
         private IDommelEntityMap mappingInnerJoin;
 
         List<string> mappedColumns = new List<string>();
-        List<string> lockedColumns = new List<string>();
+        List<string> mappedOrdered = new List<string>();
 
         private List<PropertyInfo> GetAttributesList<TClass>(TClass templateobject)
             where TClass : class
@@ -41,41 +37,51 @@ namespace Repository.Context
             mappedColumns = new List<string>();
         }
 
-        private void addStatementWithArgs<TClass>(string type, TClass templateobject, List<PropertyInfo> attributesList)
+        private void addStatementWithArgs<TClass>(string separator, TClass templateobject, List<PropertyInfo> attributesList)
         {
-
-            int listSize = attributesList.Count;
-
-            attributesList.ForEach(x =>
+            attributesList.ForEach(attr =>
             {
-
                 if (!sqlString.EndsWith("SET "))
                 {
-                    sqlString += " " + type + " ";
+                    sqlString += $" {separator} ";
                 }
 
-                string prop = this.GetMappedAttribute(mapping, x.Name);
+                string fieldName = this.GetMappedAttribute(mapping, attr.Name);
 
                 string argSequence = arguments.Count.ToString();
 
-                arguments.Add(argSequence, x.GetValue(templateobject));
+                arguments.Add(argSequence, attr.GetValue(templateobject));
 
-                sqlString += mapping.TableName + "." + prop + " = @" + argSequence;
+                sqlString += $"{mapping.TableName}.{fieldName} = @{argSequence}";
 
             });
         }
 
         private void addAttributesToSelect(IDommelEntityMap currentMap)
         {
-            foreach(IPropertyMap map in currentMap.PropertyMaps)
+            foreach (IPropertyMap map in currentMap.PropertyMaps)
             {
-                if (map.ColumnName != map.PropertyInfo.Name)
-                {
-                    mappedColumns.Add(map.ColumnName + " as " + map.PropertyInfo.Name);
-                } else
-                {
-                    mappedColumns.Add(currentMap.TableName + "." + map.PropertyInfo.Name);
-                }
+                mappedColumns.Add($"{currentMap.TableName}.{map.ColumnName} as {map.PropertyInfo.Name}");
+            }
+        }
+
+        private void addAttributesToSelect(IDommelEntityMap currentMap, Expression<Func<TEntity, object>>[] columns)
+        {
+            var columnsAttrName = columns.Select(func => this.GetAttributeName(func));
+
+            foreach (IPropertyMap map in currentMap.PropertyMaps.Where(a => columnsAttrName.Contains(a.PropertyInfo.Name)))
+            {
+                mappedColumns.Add($"{currentMap.TableName}.{map.ColumnName} as {map.PropertyInfo.Name}");
+            }
+        }
+
+        private void addAttributesToOrderBy(IDommelEntityMap currentMap, Expression<Func<TEntity, object>>[] columns)
+        {
+            var columnsAttrName = columns.Select(func => this.GetAttributeName(func));
+
+            foreach (IPropertyMap map in currentMap.PropertyMaps.Where(a => columnsAttrName.Contains(a.PropertyInfo.Name)))
+            {
+                mappedOrdered.Add($"{currentMap.TableName}.{map.ColumnName}");
             }
         }
 
@@ -83,12 +89,41 @@ namespace Repository.Context
         {
             string mappedCollumn = currentMap.PropertyMaps.First(a => a.PropertyInfo.Name == prop).ColumnName;
 
-            if (value.GetType().Name != "Int32")
+            string valueSql = valueToSqlString(value);
+
+            sqlString += $" WHERE {currentMap.TableName}.{mappedCollumn} = {valueSql} ";
+        }
+
+        private string valueToSqlString(object value)
+        {
+            string result = string.Empty;
+
+            switch (Type.GetTypeCode(value.GetType()))
             {
-                value = "'" + value + "'";
+                case TypeCode.Boolean:
+                    result = (bool)value ? "1" : "0";
+                    break;
+                case TypeCode.Int16:
+                case TypeCode.UInt16:
+                case TypeCode.Int32:
+                case TypeCode.UInt32:
+                case TypeCode.Int64:
+                case TypeCode.UInt64:
+                case TypeCode.Single:
+                case TypeCode.Double:
+                case TypeCode.Decimal:
+                    result = string.Format("{0}", value);
+                    break;
+                case TypeCode.DateTime:
+                    result = string.Format("'{0}'", ((DateTime)value).ToString("yyyyMMdd"));
+                    break;
+                case TypeCode.Char:
+                case TypeCode.String:
+                    result = string.Format("'{0}'", value);
+                    break;
             }
 
-            sqlString += " WHERE " + currentMap.TableName + "." + mappedCollumn + " = " + value;
+            return result;
         }
 
         private string GetAttributeName<T>(Expression<Func<T, object>> func)
@@ -109,25 +144,69 @@ namespace Repository.Context
             return mapp.PropertyMaps.First(a => a.PropertyInfo.Name == prop).ColumnName;
         }
 
-        public SqlBuilder<TEntity, TMap> Select(TEntity templateobject = null)
+        private string writeMapped(List<string> mapList)
         {
+            string result = string.Empty;
 
-            this.ResetValues();
+            int i = 0;
 
-
-            if (templateobject != null)
+            foreach (string mapCol in mapList)
             {
-                List<PropertyInfo> attributesList = this.GetAttributesList(templateobject);
 
-                foreach (PropertyInfo att in attributesList)
+                if (i == mapList.Count - 1)
                 {
-                    lockedColumns.Add(this.GetMappedAttribute(mapping, att.Name));
+                    result += mapCol;
                 }
+                else
+                {
+                    result += mapCol + ", ";
+                }
+
+                i++;
             }
 
-            sqlString = "SELECT * From " + mapping.TableName;
+            return result;
 
-            this.addAttributesToSelect(mapping);
+        }
+
+        public SqlBuilder<TEntity, TMap> Select(params Expression<Func<TEntity, object>>[] columns)
+        {
+            this.ResetValues();
+
+            sqlString = $" SELECT * FROM {mapping.TableName} ";
+
+            if (columns == null)
+            {
+                this.addAttributesToSelect(mapping);
+            }
+            else
+            {
+                this.addAttributesToSelect(mapping, columns);
+            }
+
+            return this;
+        }
+
+        public SqlBuilder<TEntity, TMap> Distinct()
+        {
+            sqlString = sqlString.Replace(" SELECT ", " SELECT DISTINCT ");
+
+            return this;
+        }
+
+        public SqlBuilder<TEntity, TMap> Top(int count = 1)
+        {
+            if (count > 0)
+            {
+                if (sqlString.Contains("DISTINCT"))
+                {
+                    sqlString = sqlString.Replace(" DISTINCT ", $" DISTINCT TOP {count} ");
+                }
+                else
+                {
+                    sqlString = sqlString.Replace(" SELECT ", $" SELECT TOP {count} ");
+                }
+            }
 
             return this;
         }
@@ -136,14 +215,13 @@ namespace Repository.Context
         {
             this.ResetValues();
 
-            sqlString = "UPDATE " + mapping.TableName + " SET ";
+            sqlString = $" UPDATE {mapping.TableName} SET ";
 
             return this;
         }
 
         public SqlBuilder<TEntity, TMap> Set(TEntity templateobject)
         {
-
             List<PropertyInfo> attributesList = this.GetAttributesList(templateobject);
 
             this.addStatementWithArgs(",", templateobject, attributesList);
@@ -151,9 +229,9 @@ namespace Repository.Context
             return this;
         }
 
-        public SqlBuilder<TEntity, TMap> Where(Expression<Func<TEntity, object>> f1, object value)
+        public SqlBuilder<TEntity, TMap> Where(Expression<Func<TEntity, object>> func, object value)
         {
-            string prop = this.GetAttributeName(f1);
+            string prop = this.GetAttributeName(func);
 
             this.addWhereToString(mapping, prop, value);
 
@@ -169,22 +247,20 @@ namespace Repository.Context
             return this;
         }
 
-        public SqlBuilder<TEntity, TMap> AndIsNull(Expression<Func<TEntity, object>> f1)
+        public SqlBuilder<TEntity, TMap> AndIsNull(Expression<Func<TEntity, object>> func)
         {
+            string prop = this.GetAttributeName(func);
 
-            string prop = this.GetAttributeName(f1);
-
-            sqlString += " AND " + mapping.TableName + "." + prop + " IS NULL";
+            sqlString += $" AND {mapping.TableName}.{prop} IS NULL";
 
             return this;
         }
 
-        public SqlBuilder<TEntity, TMap> AndIsNotNull(Expression<Func<TEntity, object>> f1)
+        public SqlBuilder<TEntity, TMap> AndIsNotNull(Expression<Func<TEntity, object>> func)
         {
+            string prop = this.GetAttributeName(func);
 
-            string prop = this.GetAttributeName(f1);
-
-            sqlString += " AND " + mapping.TableName + "." + prop + " IS NOT NULL";
+            sqlString += $" AND {mapping.TableName}.{prop} IS NOT NULL";
 
             return this;
         }
@@ -205,59 +281,77 @@ namespace Repository.Context
 
             mappingInnerJoin = joinMapping;
 
-            sqlString += " INNER JOIN " + joinMapping.TableName;
-
-            this.addAttributesToSelect(joinMapping);
+            sqlString += $" INNER JOIN {joinMapping.TableName} ";
 
             return this;
         }
 
-        public SqlBuilder<TEntity, TMap> On<T1>(Expression<Func<TEntity, object>> f1, Expression<Func<T1, object>> f2)
+        public SqlBuilder<TEntity, TMap> Leftjoin<TJoinMap>()
+            where TJoinMap : IDommelEntityMap, new()
         {
-            string nomeF1 = this.GetAttributeName(f1);
+            TJoinMap joinMapping = new TJoinMap();
 
-            string nomeF2 = this.GetAttributeName(f2);
+            mappingInnerJoin = joinMapping;
 
-            string column1 = this.GetMappedAttribute(mapping, nomeF1);
-            string column2 = this.GetMappedAttribute(mappingInnerJoin, nomeF2);
+            sqlString += $" LEFT JOIN {joinMapping.TableName} ";
 
-            sqlString += " ON " + mapping.TableName + "." + column1 + " = " + mappingInnerJoin.TableName + "." + column2;
+            return this;
+        }
+
+        public SqlBuilder<TEntity, TMap> On<T1>(Expression<Func<TEntity, object>> func1, Expression<Func<T1, object>> func2)
+        {
+            string attrName1 = this.GetAttributeName(func1);
+            string attrName2 = this.GetAttributeName(func2);
+
+            string columnNameMapping = this.GetMappedAttribute(mapping, attrName1);
+            string columnNameInnerJoin = this.GetMappedAttribute(mappingInnerJoin, attrName2);
+
+            sqlString += $" ON {mapping.TableName}.{columnNameMapping} = {mappingInnerJoin.TableName}.{columnNameInnerJoin} ";
+
+            return this;
+        }
+
+        public SqlBuilder<TEntity, TMap> OrderBy(params Expression<Func<TEntity, object>>[] columns)
+        {
+            if (columns != null)
+                this.addAttributesToOrderBy(mapping, columns);
 
             return this;
         }
 
         public string GetQuery()
         {
-
-            string attrs = "";
-
-            int i = 0;
-
-            List<string> mapList = mappedColumns;
-
-            if (lockedColumns.Count > 0)
+            if (sqlString.Contains("*"))
             {
-                mapList = lockedColumns;
+                string columns = writeMapped(mappedColumns);
+                sqlString = sqlString.Replace("*", columns);
+            }
+            if (mappedOrdered.Any())
+            {
+                string columnsOrdered = writeMapped(mappedOrdered);
+                sqlString += $" ORDER BY {columnsOrdered}";
             }
 
-            foreach(string mapCol in mapList)
-            {
+            return sqlString.Trim();
+        }
 
-                if (i == mapList.Count - 1)
-                {
-                    attrs += mapCol;
-                } 
-                else
-                {
-                    attrs += mapCol + ", ";
-                }
+        public string GetFormattedQuery()
+        {
+            string result = this.GetQuery();
 
-                i++;
-            }
+            result = result.Replace("SELECT ", $"SELECT{Environment.NewLine}\t ")
+                            .Replace(" SET ", $" {Environment.NewLine}SET{Environment.NewLine}\t ")
+                            .Replace(" WHERE ", $" {Environment.NewLine}WHERE{Environment.NewLine}\t ")
+                            .Replace(" FROM ", $" {Environment.NewLine}FROM ")
+                            .Replace(" INNER ", $" {Environment.NewLine}INNER ")
+                            .Replace(" LEFT ", $" {Environment.NewLine}LEFT ")
+                            .Replace(",", $",{Environment.NewLine}\t")
+                            .Replace(" AND ", $" {Environment.NewLine}\tAND ")
+                            .Replace(" OR ", $" {Environment.NewLine}\tOR ")
+                            .Replace(" ON ", $" {Environment.NewLine}\t\tON ")
+                            .Replace(" ORDER BY ", $" {Environment.NewLine}ORDER BY{Environment.NewLine}\t ");
 
-            sqlString = sqlString.Replace("*", attrs);
-
-            return sqlString;
+            return result.Trim();
         }
 
         public Dictionary<string, object> GetArgs()
